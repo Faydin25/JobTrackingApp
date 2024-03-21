@@ -1,3 +1,39 @@
-﻿@{
-    Layout = "_Layout";
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proje ve Görev Takip Uygulaması</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Proje ve Görev Takip Uygulaması</h1>
+        <div class="project-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Proje Adı</th>
+                        <th>Görevler</th>
+                        <th>Durum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Proje ve görev bilgileri burada dinamik olarak eklenecek -->
+                    <tr>
+                        <td>Proje 1</td>
+                        <td>Görev 1, Görev 2, Görev 3</td>
+                        <td>Tamamlandı</td>
+                    </tr>
+                    <tr>
+                        <td>Proje 2</td>
+                        <td>Görev 1, Görev 2</td>
+                        <td>Devam Ediyor</td>
+                    </tr>
+                    <!-- Yeni projeler ve görevler bu şekilde dinamik olarak eklenebilir -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
