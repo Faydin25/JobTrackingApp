@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ocIklnJXAw5hCZyRxCFWDJeJezMjXfUzSRjMMsuYLFAvdL+m5/ZMob/HfePK4VJCSfY69VBb0+K39TFxEMsvYQ==",
+  "dgSpecHash": "JRB28mb7aPx8bVXhCEIS1eCE1Ybzxe8srUuW6z0ew1c1IB36l3ewJOGYb6T2+xTTVdkcaxCk/2lukzO5m7cBkw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\MaxWell\\Desktop\\MyApplication\\MyApplication.Web\\MyApplication.Web.csproj",
+  "projectFilePath": "C:\\Users\\MaxWell\\Desktop\\sss\\MyApplication.Web\\MyApplication.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MaxWell\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\MaxWell\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

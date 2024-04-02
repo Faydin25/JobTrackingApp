@@ -18,6 +18,14 @@ namespace MyApplication.Controllers
         {
             return View();
         }
+        public IActionResult Register()
+        {
+            return View();
+        }
+        public IActionResult Profile()
+        {
+            return View();
+        }
         private readonly ApplicationDbContext _context;
 
         public HomeController(ApplicationDbContext context)
