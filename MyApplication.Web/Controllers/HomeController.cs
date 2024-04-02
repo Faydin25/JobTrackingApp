@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MyApplication.Web.Data;
+using MyApplication.Web.Models;
 using System.Diagnostics;
-// using MyApplication.Models; 
 
 namespace MyApplication.Controllers
 {
@@ -16,11 +18,28 @@ namespace MyApplication.Controllers
         {
             return View();
         }
+        private readonly ApplicationDbContext _context;
 
-        public IActionResult Register()
+        public HomeController(ApplicationDbContext context)
         {
-            return View();
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Register(User model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User { UserName = model.UserName, Email = model.Email, Password = model.Password };
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+
 
         public IActionResult EditProfile()
         {
