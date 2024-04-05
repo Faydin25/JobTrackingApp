@@ -1,16 +1,16 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyApplication.Web.Data;
 using MyApplication.Web.Models;
 using System.Diagnostics;
 
-namespace MyApplication.Controllers
+namespace MyApplication.Web.Controllers
 {
     public class HomeController : Controller
     {
 
-        [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -25,7 +25,9 @@ namespace MyApplication.Controllers
         {
             return View();
         }
+
         //------------------------------------------------
+
         private readonly ApplicationDbContext _context;
 
         public HomeController(ApplicationDbContext context)
@@ -47,6 +49,27 @@ namespace MyApplication.Controllers
             return View(model);
         }
         [HttpPost]
+
+        //------------------------------------------------
+
+        public ActionResult Profile(int id)
+        {
+
+            var user =  _context.Users.Find(id);
+            if (user == null)
+            {
+                return View("Profile");
+            }
+
+            var viewModel = new User
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email
+            };
+
+            return View(viewModel);
+        }
 
 
         public IActionResult EditProfile()
