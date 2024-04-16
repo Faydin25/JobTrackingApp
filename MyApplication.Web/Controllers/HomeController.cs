@@ -5,9 +5,12 @@ using Microsoft.EntityFrameworkCore;
 using MyApplication.Web.Data;
 using MyApplication.Web.Models;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace MyApplication.Web.Controllers
 {
+
+
     public class HomeController : Controller
     {
 
@@ -15,13 +18,8 @@ namespace MyApplication.Web.Controllers
         {
             return View();
         }
-        //------------------------------------------------
+
         public IActionResult Register()
-        {
-            return View();
-        }
-        //------------------------------------------------
-        public IActionResult Profile()
         {
             return View();
         }
@@ -32,54 +30,62 @@ namespace MyApplication.Web.Controllers
 
         public HomeController(ApplicationDbContext context)
         {
-            _context = context; //?? throw new ArgumentNullException(nameof(context));
+            _context = context;
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> Register(User model)//Kullanıcıları eklemek için
+        public async Task<IActionResult> Register(User model)
         {
-            if (ModelState.IsValid)
+            bool userNameExists = await _context.Users.AnyAsync(u => u.UserName == model.UserName);
+            bool emailExists = await _context.Users.AnyAsync(u => u.Email == model.Email);
+
+            if (userNameExists || emailExists)
             {
-                var user = new User { UserName = model.UserName, Email = model.Email, Password = model.Password };
-                _context.Users.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (userNameExists)
+                {
+                    ModelState.AddModelError("UserName", "Bu kullanıcı adı zaten kullanımda.");
+                }
+                if (emailExists)
+                {
+                    ModelState.AddModelError("Email", "Bu e-posta adresi zaten kullanımda.");
+                }
+                return View("Register");
             }
-            return View(model);
+
+            var user = new User { UserName = model.UserName, Email = model.Email, Password = model.Password };
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
+
         [HttpPost]
-
-        //------------------------------------------------
-
-        public ActionResult Profile(int id)
+        public IActionResult Profile()
         {
-
-            var user =  _context.Users.Find(id);
-            if (user == null)
-            {
-                return View("Profile");
-            }
-
-            var viewModel = new User
-            {
-                Id = user.Id,
-                UserName = user.UserName,
-                Email = user.Email
-            };
-
-            return View(viewModel);
+            return View();
         }
-
 
         public IActionResult EditProfile()
         {
             return View();
         }
 
-        public IActionResult Logout() //Profile
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginModel model)
         {
-            // Örneğin, HttpContext.SignOutAsync() kullanılabilir
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == model.UserName && u.Password == model.Password);
+
+            if (user != null)
+            {
+                return View("Profile");
+            }
+            return View("Index");
+        }
+
+
+        public IActionResult Logout() //"Profile" de koyucam.
+        {
             return RedirectToAction("Index");
         }
 

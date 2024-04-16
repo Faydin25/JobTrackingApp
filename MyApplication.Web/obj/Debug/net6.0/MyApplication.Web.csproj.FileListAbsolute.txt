@@ -129,3 +129,6 @@ C:\Users\MaxWell\Desktop\sss\MyApplication.Web\obj\Debug\net6.0\refint\MyApplica
 C:\Users\MaxWell\Desktop\sss\MyApplication.Web\obj\Debug\net6.0\MyApplication.Web.pdb
 C:\Users\MaxWell\Desktop\sss\MyApplication.Web\obj\Debug\net6.0\MyApplication.Web.genruntimeconfig.cache
 C:\Users\MaxWell\Desktop\sss\MyApplication.Web\obj\Debug\net6.0\ref\MyApplication.Web.dll
+C:\Users\MaxWell\Desktop\sss\MyApplication.Web\obj\Debug\net6.0\MyApplication.Web.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\MaxWell\Desktop\sss\MyApplication.Web\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\MaxWell\Desktop\sss\MyApplication.Web\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll

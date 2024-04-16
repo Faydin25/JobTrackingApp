@@ -1,8 +1,15 @@
-﻿@model MyApplication.Web.Models.User
+﻿@model User
 
-@{
-    ViewBag.Title = "Profil";
+<h2>Profil Bilgileri</h2>
+
+@if (Model != null)
+{
+    <div>
+        <h3>Kullanıcı Adı: @Model.UserName</h3>
+        <h3>Email: @Model.Email</h3>
+    </div>
 }
-
-<h2>Profil</h2>
-
+else
+{
+    <p>Kullanıcı bilgileri yüklenemedi.</p>
+}
