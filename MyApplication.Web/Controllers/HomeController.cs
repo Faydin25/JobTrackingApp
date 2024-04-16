@@ -61,9 +61,14 @@ namespace MyApplication.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Profile()
+        public async Task<IActionResult> Profile()
         {
-            return View();
+            var model = new User();
+            var userName = HttpContext.Session.GetString("UserName");//
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+            model = user ?? new User();
+
+            return View(model);
         }
 
         public IActionResult EditProfile()
@@ -78,6 +83,8 @@ namespace MyApplication.Web.Controllers
 
             if (user != null)
             {
+                HttpContext.Session.SetString("UserName", user.UserName);
+
                 return View("Profile");
             }
             return View("Index");
