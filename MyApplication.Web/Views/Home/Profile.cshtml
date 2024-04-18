@@ -1,18 +1,53 @@
 ﻿@model User
 
-<h2>Profil Bilgileri</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Profili</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Profil bilgileri başlığı -->
+        <h2 class="mb-4">Profil Bilgileri</h2>
 
-@if (Model != null)
-{
-    <div>
-        <h3>Kullanıcı Adı: @Model.UserName</h3>
-        <h3>Email: @Model.Email</h3>
+        @if (Model != null)
+        {
+            <!-- Kart stilinde kullanıcı bilgileri -->
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Kullanıcı Bilgileri</h4>
+                    <!-- Kullanıcı adı ve email bilgileri -->
+                    <p class="card-text"><strong>Kullanıcı Adı:</strong> @Model.UserName</p>
+                    <p class="card-text"><strong>Email:</strong> @Model.Email</p>
+                </div>
+                <!-- Profili düzenleme butonu -->
+                <div class="card-footer">
+                    <form method="post" action="/ForEditProfileContoller/Index">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-edit"></i> Profili Düzenle
+                        </button>
+                    </form>
+                </div>
+            </div>
+        }
+        else
+        {
+            <!-- Kullanıcı bilgileri yüklenemediği durumda gösterilecek mesaj -->
+            <div class="alert alert-warning" role="alert">
+                Kullanıcı bilgileri yüklenemedi.
+            </div>
+        }
     </div>
-    <form method="post" action="/ForEditProfileContoller/Index">
-        <button type="submit" class="btn btn-primary">Profili Düzenle</button>
-    </form>
-}
-else
-{
-    <p>Kullanıcı bilgileri yüklenemedi.</p>
-}
+
+    <!-- Bootstrap and JavaScript Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
