@@ -60,7 +60,6 @@ namespace MyApplication.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
         public async Task<IActionResult> Profile()
         {
             var model = new User();
@@ -69,11 +68,6 @@ namespace MyApplication.Web.Controllers
             model = user ?? new User();
 
             return View(model);
-        }
-
-        public IActionResult EditProfile()
-        {
-            return View();
         }
 
         [HttpPost]
@@ -85,16 +79,17 @@ namespace MyApplication.Web.Controllers
             {
                 HttpContext.Session.SetString("UserName", user.UserName);
 
-                return View("Profile");
+                return RedirectToAction("Profile");
             }
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
 
-        public IActionResult Logout() //"Profile" de koyucam.
+        public IActionResult Logout() //"Profile sayfasına koyucam.
         {
             return RedirectToAction("Index");
         }
+
 
     }
 }

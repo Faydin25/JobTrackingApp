@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\MaxWell\Desktop\sss\MyApplication.Web
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/MaxWell/Desktop/sss/MyApplication.Web/Views/ForEditProfileContoller/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9yRWRpdFByb2ZpbGVDb250b2xsZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MaxWell/Desktop/sss/MyApplication.Web/Views/Home/EditProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0UHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/MaxWell/Desktop/sss/MyApplication.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
