@@ -4,11 +4,11 @@ using MyApplication.Web.Models;
 
 namespace MyApplication.Web.Controllers
 {
-    public class ForEditProfileContoller : Controller
+    public class ForEditProfileController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ForEditProfileContoller(ApplicationDbContext context)
+        public ForEditProfileController(ApplicationDbContext context)
         {
             _context = context;
         }
