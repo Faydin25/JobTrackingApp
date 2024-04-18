@@ -12,7 +12,7 @@ namespace MyApplication.Web.Controllers
         {
             _context = context;
         }
-        public IActionResult EditProfile()
+        public IActionResult Index()
         {
             return View();
         }
