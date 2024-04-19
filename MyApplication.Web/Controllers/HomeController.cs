@@ -32,7 +32,7 @@ namespace MyApplication.Web.Controllers
         {
             _context = context;
         }
-
+        //------------------------------------------------
 
         [HttpPost]
         public async Task<IActionResult> Register(User model)
@@ -63,7 +63,8 @@ namespace MyApplication.Web.Controllers
         public async Task<IActionResult> Profile()
         {
             var model = new User();
-            var userName = HttpContext.Session.GetString("UserName");//
+            var userName = HttpContext.Session.GetString("UserName");
+            //var Id = HttpContext.Session.GetInt32("Id");
             var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
             model = user ?? new User();
 
@@ -78,6 +79,7 @@ namespace MyApplication.Web.Controllers
             if (user != null)
             {
                 HttpContext.Session.SetString("UserName", user.UserName);
+                
 
                 return RedirectToAction("Profile");
             }

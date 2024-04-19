@@ -1,6 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyApplication.Web.Data;
 using MyApplication.Web.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
+using System.Security.Claims;
 
 namespace MyApplication.Web.Controllers
 {
@@ -19,6 +24,11 @@ namespace MyApplication.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> EditProfile(User model)
         {
+            {
+                var userName = HttpContext.Session.GetString("UserName");
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+                model.Id = user.Id;
+            }
             if (ModelState.IsValid)
             {
                 var user = await _context.Users.FindAsync(model.Id);
@@ -28,7 +38,7 @@ namespace MyApplication.Web.Controllers
                     user.Email = model.Email;
                     user.Password = model.Password;
                     await _context.SaveChangesAsync();
-                    return RedirectToAction("ProfileUpdated");
+                    return RedirectToAction("Profile");// Düzelt!
                 }
             }
             return View(model);
