@@ -27,11 +27,15 @@
                     <p class="card-text"><strong>Email:</strong> @Model.Email</p>
                 </div>
                 <!-- Profili düzenleme butonu -->
-                <div class="card-footer">
+                <div class="card-footer d-flex">
                     <form method="post" action="/ForEditProfile/Index">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary mr-md-4">
                             <i class="fas fa-edit"></i> Profili Düzenle
                         </button>
+                    </form>
+
+                    <form asp-controller="BusinessPage" asp-action="Index" method="post">
+                        <button type="submit" class="btn btn-primary">İş Modeline Git</button>
                     </form>
                 </div>
             </div>
@@ -44,6 +48,7 @@
             </div>
         }
     </div>
+
 
     <!-- Bootstrap and JavaScript Dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
