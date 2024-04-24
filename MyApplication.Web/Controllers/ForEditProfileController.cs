@@ -27,18 +27,30 @@ namespace MyApplication.Web.Controllers
             {
                 var userName = HttpContext.Session.GetString("UserName");
                 var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
-                model.Id = user.Id;
+                if (user.Id != model.Id)
+                    model.Id = user.Id;
             }
             if (ModelState.IsValid)
             {
                 var user = await _context.Users.FindAsync(model.Id);
                 if (user != null)
                 {
-                    user.UserName = model.UserName;
-                    user.Email = model.Email;
-                    user.Password = model.Password;
+                    if (model.UserName != null)
+                    {
+                        bool userNameExists = await _context.Users.AnyAsync(u => u.UserName == model.UserName);
+                        if (!userNameExists)
+                            user.UserName = model.UserName;
+                    }
+                    if (model.Email != null)
+                    {
+                        bool emailExists = await _context.Users.AnyAsync(u => u.Email == model.Email);
+                        if(!emailExists)
+                            user.Email = model.Email;
+                    }
+                    if(model.Password != null)
+                        user.Password = model.Password;
                     await _context.SaveChangesAsync();
-                    return RedirectToAction("Profile");// Düzelt!
+                    return RedirectToAction("Profile", "Home", user);// Düzelt!
                 }
             }
             return View(model);
