@@ -34,5 +34,12 @@
             Hesabınız yok mu? <a href="/Home/Register">Kayıt Ol</a>
     </div>
 
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="error-message">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div>
+    }
+
 </body>
 </html>

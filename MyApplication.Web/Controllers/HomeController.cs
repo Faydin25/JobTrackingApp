@@ -44,13 +44,13 @@ namespace MyApplication.Web.Controllers
             {
                 if (userNameExists)
                 {
-                    ModelState.AddModelError("UserName", "Bu kullanıcı adı zaten kullanımda.");
+                    ModelState.AddModelError("", "Bu kullanıcı adı zaten kullanımda.");
                 }
                 if (emailExists)
                 {
-                    ModelState.AddModelError("Email", "Bu e-posta adresi zaten kullanımda.");
+                    ModelState.AddModelError("", "Bu e-posta adresi zaten kullanımda.");
                 }
-                return View("Register");
+                return View();
             }
 
             var user = new User { UserName = model.UserName, Email = model.Email, Password = model.Password };
@@ -83,7 +83,11 @@ namespace MyApplication.Web.Controllers
 
                 return RedirectToAction("Profile");
             }
-            return RedirectToAction("Index");
+            else
+            {
+                ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı.");
+                return View("Index");
+            }
         }
 
 

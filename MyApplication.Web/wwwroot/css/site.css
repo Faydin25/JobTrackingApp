@@ -52,3 +52,19 @@ button {
 .register-link {
     margin-top: 20px;
 }
+
+.error-message {
+    position: fixed; /* Sabit pozisyon, sayfa ile birlikte hareket etmez */
+    top: 50%; /* Üstten itibaren %50 konumlandýrma */
+    left: 50%; /* Soldan itibaren %50 konumlandýrma */
+    transform: translate(-50%, -50%); /* Kendi boyutunun yarýsý kadar geri çek */
+    width: 90%; /* Geniþliði ekranýn %90'ý kadar */
+    max-width: 600px; /* Maksimum geniþlik 600px */
+    padding: 20px; /* Ýç boþluk */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Gölge efekti */
+    background-color: #f8d7da; /* Arka plan rengi */
+    color: #721c24; /* Metin rengi */
+    text-align: center; /* Metni ortala */
+    border-radius: 10px; /* Köþeleri yuvarlak yap */
+    z-index: 1000; /* Diðer öðelerin önünde olmasýný saðla */
+}
