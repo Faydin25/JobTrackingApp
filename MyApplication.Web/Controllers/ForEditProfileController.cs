@@ -50,7 +50,7 @@ namespace MyApplication.Web.Controllers
                     if(model.Password != null)
                         user.Password = model.Password;
                     await _context.SaveChangesAsync();
-                    return RedirectToAction("Profile", "Home");// Düzelt!
+                    return RedirectToAction("Profile", "Home");
                 }
             }
             return View(model);

@@ -1,7 +1,6 @@
 ﻿@model MyApplication.Web.Models.BusinessPageViewModel
 @using TaskStatus = MyApplication.Web.Models.TaskStatus;
 
-
 @{
     ViewData["Title"] = "Business Page";
 }
@@ -24,21 +23,27 @@
 
 <div class="container-fluid">
     <div class="row">
-        @foreach (var task in Model.Tasks.Where(t => t.Status == (TaskStatus)status))
+        @foreach (var status in Enum.GetValues(typeof(TaskStatus)))
         {
-            <div class="card mb-1">
-                <div class="card-header">
-                    @task.User.UserName
-                </div>
-                <div class="card-body">
-                    @task.Description
-                    <!-- Silme butonu için form -->
-                    <form method="post" action="@Url.Action("DeleteTask", "BusinessPage", new { taskId = task.TaskId })" onsubmit="return confirm('Bu görevi silmek istediğinizden emin misiniz?');">
-                        <button type="submit" class="btn btn-danger">Sil</button>
-                    </form>
-                </div>
+            <div class="col border border-dark mx-1">
+                <h1 class="text-center">@status.ToString()</h1>
+                @foreach (var task in Model.Tasks.Where(t => t.Status == (TaskStatus)status))
+                {
+                    <div class="card mb-1">
+                        <div class="card-header">
+                            @task.Title
+                        </div>
+                        <div class="card-body">
+                            @task.Description
+                            <p>Oluşturulma Tarihi: @task.CreatedDate.ToString("dd/MM/yyyy HH:mm:ss")</p>
+                            <!-- Silme butonu için form -->
+                            <form method="post" action="@Url.Action("DeleteTask", "BusinessPage", new { taskId = task.TaskId })" onsubmit="return confirm('Bu görevi silmek istediğinizden emin misiniz?');">
+                                <button type="submit" class="btn btn-danger">Sil</button>
+                            </form>
+                        </div>
+                    </div>
+                }
             </div>
         }
-
     </div>
 </div>

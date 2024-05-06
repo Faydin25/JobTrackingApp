@@ -13,6 +13,7 @@ namespace MyApplication.Web.Models
         public int UserId { get; set; }  // Foreign key User modelin Id alanına bağlı
 
         public string? Description { get; set; }
+        public string? Title { get; set; }
 
         public TaskStatus Status { get; set; }  // Enum kullanarak task durumunu yönet
 
