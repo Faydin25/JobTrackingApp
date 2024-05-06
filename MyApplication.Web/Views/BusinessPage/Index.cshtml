@@ -1,1 +1,44 @@
-﻿
+﻿@model MyApplication.Web.Models.BusinessPageViewModel
+@using TaskStatus = MyApplication.Web.Models.TaskStatus;
+
+
+@{
+    ViewData["Title"] = "Business Page";
+}
+
+<script src="~/js/site.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<h1>Görevler</h1>
+
+<form>
+    <label for="userId">Kullanıcı Seçin:</label>
+    <select id="userId" name="userId" class="form-control" onchange="this.form.submit()">
+        <option value="">Lütfen bir kullanıcı seçiniz</option>
+        @foreach (var user in Model.Users)
+        {
+            <option value="@user.Id">@user.UserName</option>
+        }
+    </select>
+</form>
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var task in Model.Tasks.Where(t => t.Status == (TaskStatus)status))
+        {
+            <div class="card mb-1">
+                <div class="card-header">
+                    @task.User.UserName
+                </div>
+                <div class="card-body">
+                    @task.Description
+                    <!-- Silme butonu için form -->
+                    <form method="post" action="@Url.Action("DeleteTask", "BusinessPage", new { taskId = task.TaskId })" onsubmit="return confirm('Bu görevi silmek istediğinizden emin misiniz?');">
+                        <button type="submit" class="btn btn-danger">Sil</button>
+                    </form>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
