@@ -10,6 +10,41 @@
 
 <h1>Görevler</h1>
 
+<!-- Yeni Görev Ekleme Formu -->
+<div class="container">
+    <h2>Yeni Görev Ekle</h2>
+    <form method="post" action="@Url.Action("CreateTask", "BusinessPage")">
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <label for="title">Başlık:</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Açıklama:</label>
+            <textarea class="form-control" id="description" name="description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="status">Durum:</label>
+            <select class="form-control" id="status" name="status">
+                @foreach (var status in Enum.GetValues(typeof(TaskStatus)))
+                {
+                    <option value="@status">@status</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="userId">Kullanıcı:</label>
+            <select class="form-control" id="userId" name="userId" required>
+                @foreach (var user in Model.Users)
+                {
+                    <option value="@user.Id">@user.UserName</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Görev Oluştur</button>
+    </form>
+</div>
+
 <form>
     <label for="userId">Kullanıcı Seçin:</label>
     <select id="userId" name="userId" class="form-control" onchange="this.form.submit()">
@@ -34,8 +69,13 @@
                             @task.Title
                         </div>
                         <div class="card-body">
-                            @task.Description
-                            <p>Oluşturulma Tarihi: @task.CreatedDate.ToString("dd/MM/yyyy HH:mm:ss")</p>
+                            <!-- Açıklama düzenleme formu -->
+                            <form method="post" action="@Url.Action("EditDescription", "BusinessPage")">
+                                <input type="hidden" name="taskId" value="@task.TaskId" />
+                                <textarea name="description" class="form-control">@task.Description</textarea>
+                                <p>Oluşturulma Tarihi: @task.CreatedDate.ToString("dd/MM/yyyy ")</p>
+                                <button type="submit" class="btn btn-success">Kaydet</button>
+                            </form>
                             <!-- Silme butonu için form -->
                             <form method="post" action="@Url.Action("DeleteTask", "BusinessPage", new { taskId = task.TaskId })" onsubmit="return confirm('Bu görevi silmek istediğinizden emin misiniz?');">
                                 <button type="submit" class="btn btn-danger">Sil</button>
@@ -47,3 +87,4 @@
         }
     </div>
 </div>
+

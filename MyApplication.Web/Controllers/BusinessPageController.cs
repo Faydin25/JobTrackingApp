@@ -53,5 +53,39 @@ namespace MyApplication.Web.Controllers
             return RedirectToAction("Index"); // Görev listesi sayfasına geri yönlendir
         }
 
+        [HttpPost]
+        public IActionResult EditDescription(int taskId, string description)
+        {
+            var task = _context.Tasks.FirstOrDefault(t => t.TaskId == taskId);
+            if (task != null)
+            {
+                task.Description = description;
+                _context.SaveChanges();
+                TempData["Message"] = "Açıklama güncellendi.";
+            }
+            else
+            {
+                TempData["Error"] = "Görev bulunamadı.";
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult CreateTask(string title, string description, Models.TaskStatus status, int userId)
+        {
+            var newTask = new Models.Task
+            {
+                Title = title,
+                Description = description,
+                Status = status,
+                CreatedDate = DateTime.Now,
+                UserId = userId // Kullanıcı ID'sini atayın
+            };
+            _context.Tasks.Add(newTask);
+            _context.SaveChanges();
+
+            TempData["Message"] = "Yeni görev başarıyla oluşturuldu.";
+            return RedirectToAction("Index");
+        }
     }
 }
