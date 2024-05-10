@@ -43,6 +43,10 @@ namespace MyApplication.Web.Controllers
                             user.UserName = model.UserName;
                             HttpContext.Session.SetString("UserName", model.UserName);
                         }
+                        else
+                        {
+                            ModelState.AddModelError("", "Bu kullanıcı adı zaten kullanımda.");
+                        }
                     }
                     if (model.Email != null)
                     {
@@ -52,13 +56,28 @@ namespace MyApplication.Web.Controllers
                             user.Email = model.Email;
                             HttpContext.Session.SetString("Email", model.Email);
                         }
+                        else
+                        {
+                            ModelState.AddModelError("", "Bu e-posta adresi zaten kullanımda.");
+                        }
                     }
                     if (model.Password != null)
                     {
                         user.Password = model.Password;
                         HttpContext.Session.SetString("Password", model.Password);
                     }
+                    if (model.DateOfBirth != null)
+                    {
+                        if (model.DateOfBirth < DateTime.Now.Date)
+                            user.DateOfBirth = model.DateOfBirth;
+                        else
+                            ModelState.AddModelError("", "İleri bir tarih eklenemez.");
+                    }
                     await _context.SaveChangesAsync();
+                    foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        TempData["Error"] = error.ErrorMessage; // Veya hataları dizi olarak saklayabilirsiniz.
+                    }
                     return RedirectToAction("Profile", "Home");
                 }
             }

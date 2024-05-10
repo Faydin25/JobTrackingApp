@@ -339,3 +339,4 @@ C:\Users\MaxWell\Desktop\JobTrackingApp\MyApplication.Web\obj\Debug\net6.0\refin
 C:\Users\MaxWell\Desktop\JobTrackingApp\MyApplication.Web\obj\Debug\net6.0\MyApplication.Web.pdb
 C:\Users\MaxWell\Desktop\JobTrackingApp\MyApplication.Web\obj\Debug\net6.0\MyApplication.Web.genruntimeconfig.cache
 C:\Users\MaxWell\Desktop\JobTrackingApp\MyApplication.Web\obj\Debug\net6.0\ref\MyApplication.Web.dll
+C:\Users\MaxWell\Desktop\JobTrackingApp\MyApplication.Web\bin\Debug\net6.0\Newtonsoft.Json.dll
