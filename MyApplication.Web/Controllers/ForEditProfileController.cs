@@ -39,16 +39,25 @@ namespace MyApplication.Web.Controllers
                     {
                         bool userNameExists = await _context.Users.AnyAsync(u => u.UserName == model.UserName);
                         if (!userNameExists)
+                        {
                             user.UserName = model.UserName;
+                            HttpContext.Session.SetString("UserName", model.UserName);
+                        }
                     }
                     if (model.Email != null)
                     {
                         bool emailExists = await _context.Users.AnyAsync(u => u.Email == model.Email);
-                        if(!emailExists)
+                        if (!emailExists)
+                        {
                             user.Email = model.Email;
+                            HttpContext.Session.SetString("Email", model.Email);
+                        }
                     }
-                    if(model.Password != null)
+                    if (model.Password != null)
+                    {
                         user.Password = model.Password;
+                        HttpContext.Session.SetString("Password", model.Password);
+                    }
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Profile", "Home");
                 }
