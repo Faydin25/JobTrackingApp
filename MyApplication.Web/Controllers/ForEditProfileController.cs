@@ -69,7 +69,7 @@ namespace MyApplication.Web.Controllers
                     if (model.DateOfBirth != null)
                     {
                         if (model.DateOfBirth < DateTime.Now.Date)
-                            user.DateOfBirth = model.DateOfBirth;
+                            user.DateOfBirth = model.DateOfBirth?.Date ?? DateTime.Today;
                         else
                             ModelState.AddModelError("", "İleri bir tarih eklenemez.");
                     }
