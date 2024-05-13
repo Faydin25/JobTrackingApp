@@ -74,6 +74,27 @@ namespace MyApplication.Web.Controllers
                         else
                             ModelState.AddModelError("", "İleri bir tarih eklenemez.");
                     }
+                    if (model.File != null)
+                    {
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+
+                        //create folder if not exist
+                        if (!Directory.Exists(path))
+                            Directory.CreateDirectory(path);
+
+                        //get file extension
+                        FileInfo fileInfo = new FileInfo(model.File.FileName);
+                        string fileName = model.File.FileName;
+
+                        string fileNameWithPath = Path.Combine(path, fileName);
+
+                        using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
+                        {
+                            model.File.CopyTo(stream);
+                        }
+
+                        user.PhotoPath = model.File.FileName;
+                    }
                     await _context.SaveChangesAsync();
                     foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
                     {

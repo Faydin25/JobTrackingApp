@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "n2qihZPZH5NmEmYn6CfxG95Y1WYcHfoie6LsJza6rSE=",
+  "Hash": "J52trsGuFiyLxNZ4+vCYRvyJ8AvPvJ+JQtcKQ4SMxkM=",
   "Source": "MyApplication.Web",
   "BasePath": "_content/MyApplication.Web",
   "Mode": "Default",
@@ -1250,6 +1250,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\images\\resiim.jpg",
+      "SourceId": "MyApplication.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\",
+      "BasePath": "_content/MyApplication.Web",
+      "RelativePath": "images/resiim.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\resiim.jpg"
     },
     {
       "Identity": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\js\\site.js",
