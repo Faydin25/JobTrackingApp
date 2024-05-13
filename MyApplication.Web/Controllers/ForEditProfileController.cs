@@ -21,8 +21,9 @@ namespace MyApplication.Web.Controllers
         {
             return View();
         }
+
         [HttpPost]
-        public async Task<IActionResult> EditProfile(User model)
+        public async Task<IActionResult> EditProfile(EditProfileModel model)
         {
             {
                 var userName = HttpContext.Session.GetString("UserName");
@@ -81,7 +82,7 @@ namespace MyApplication.Web.Controllers
                     return RedirectToAction("Profile", "Home");
                 }
             }
-            return View(model);
+            return View("Index");
         }
 
     }
