@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vTuvCk65zCWQY4guXD4jumuEmmqEnYlhDZLWeIAuZOA=",
+  "Hash": "n2qihZPZH5NmEmYn6CfxG95Y1WYcHfoie6LsJza6rSE=",
   "Source": "MyApplication.Web",
   "BasePath": "_content/MyApplication.Web",
   "Mode": "Default",
@@ -1193,6 +1193,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MyApplication.Web.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\css\\ForTaskList.css",
+      "SourceId": "MyApplication.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\",
+      "BasePath": "_content/MyApplication.Web",
+      "RelativePath": "css/ForTaskList.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\ForTaskList.css"
     },
     {
       "Identity": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\css\\site.css",

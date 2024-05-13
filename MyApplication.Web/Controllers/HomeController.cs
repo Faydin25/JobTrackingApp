@@ -18,7 +18,15 @@ namespace MyApplication.Web.Controllers
         {
             return View();
         }
+        public IActionResult TaskList()
+        {
+            var viewModel = new BusinessPageViewModel
+            {
+                Tasks = _context.Tasks.Include(t => t.User).ToList()
+            };
+            return View(viewModel);
 
+        }
         public IActionResult Register()
         {
             return View();
