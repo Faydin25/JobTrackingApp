@@ -6,9 +6,12 @@
 }
 
 <script src="~/js/site.js"></script>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 
-<h1>Görevler</h1>
+
+<div class="task-container">
+    <h1 style="text-align:center">Görevler</h1>
+    <br />
+    <br />
 
 <!-- Yeni Görev Ekleme Formu -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#taskModal">
@@ -68,6 +71,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 }
 
+<br />
+<br />
 <form>
     <label for="userId">Kullanıcı Seçin:</label>
     <select id="userId" name="userId" class="form-control" onchange="this.form.submit()">
@@ -79,11 +84,12 @@
     </select>
 </form>
 
-<div class="container-fluid">
+<br /><br />
+<div class="container-fluid ">
     <div class="row">
         @foreach (var status in Enum.GetValues(typeof(TaskStatus)))
         {
-            <div class="col border border-dark mx-1">
+            <div class="col turkcell-border mx-1">
                 <h1 class="text-center">@status.ToString()</h1>
                 @foreach (var task in Model.Tasks.Where(t => t.Status == (TaskStatus)status))
                 {
@@ -97,7 +103,7 @@
                                 <input type="hidden" name="taskId" value="@task.TaskId" />
                                 <textarea name="description" class="form-control">@task.Description</textarea>
                                 <p>Oluşturulma Tarihi: @task.CreatedDate.ToString("dd/MM/yyyy ")</p>
-                                <button type="submit" class="btn btn-success">Kaydet</button>
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
                             </form>
                             <!-- Silme butonu için form -->
                             <form method="post" action="@Url.Action("DeleteTask", "BusinessPage", new { taskId = task.TaskId })" onsubmit="return confirm('Bu görevi silmek istediğinizden emin misiniz?');">
@@ -109,5 +115,6 @@
             </div>
         }
     </div>
+</div>
 </div>
 

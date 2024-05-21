@@ -5,16 +5,16 @@
       "PackagePath": "staticwebassets\\MyApplication.Web.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\css\\ForTaskList.css",
-      "PackagePath": "staticwebassets\\css\\ForTaskList.css"
-    },
-    {
       "Id": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\images\\Tlogo.png",
+      "PackagePath": "staticwebassets\\images\\Tlogo.png"
     },
     {
       "Id": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\images\\resiim.jpg",

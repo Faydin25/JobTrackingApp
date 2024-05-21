@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "J52trsGuFiyLxNZ4+vCYRvyJ8AvPvJ+JQtcKQ4SMxkM=",
+  "Hash": "t9QFblD43VbNS7afaNfaH7euPbAn2Oh+EGI28IpI46w=",
   "Source": "MyApplication.Web",
   "BasePath": "_content/MyApplication.Web",
   "Mode": "Default",
@@ -1195,25 +1195,6 @@
       "OriginalItemSpec": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MyApplication.Web.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\css\\ForTaskList.css",
-      "SourceId": "MyApplication.Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\",
-      "BasePath": "_content/MyApplication.Web",
-      "RelativePath": "css/ForTaskList.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\ForTaskList.css"
-    },
-    {
       "Identity": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\css\\site.css",
       "SourceId": "MyApplication.Web",
       "SourceType": "Discovered",
@@ -1269,6 +1250,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\resiim.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\images\\Tlogo.png",
+      "SourceId": "MyApplication.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\",
+      "BasePath": "_content/MyApplication.Web",
+      "RelativePath": "images/Tlogo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Tlogo.png"
     },
     {
       "Identity": "C:\\Users\\MaxWell\\Desktop\\JobTrackingApp\\MyApplication.Web\\wwwroot\\js\\site.js",

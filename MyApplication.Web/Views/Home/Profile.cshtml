@@ -6,38 +6,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kullanıcı Profili</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container mt-5">
         <!-- Profil bilgileri başlığı -->
-        <h2 class="mb-4">Profil Bilgileri</h2>
+        <h2 class="profile-header">Profil Bilgileri</h2>
 
         @if (Model != null)
         {
             <!-- Kart stilinde kullanıcı bilgileri -->
-            <div class="card">
+            <div class="card profile-container">
                 <div class="card-body">
-                    <h4 class="card-title">Kullanıcı Bilgileri</h4>
                     <!-- Kullanıcı adı ve email bilgileri -->
-                    <img src="/images/@Model.PhotoPath" class="image" style="width: 100%; height: 15em;" />
-                    <p class="card-text"><strong>Kullanıcı Adı:</strong> @Model.UserName</p>
-                    <p class="card-text"><strong>Email:</strong> @Model.Email</p>
-                    <p class="card-text"><strong>Doğum Tarihi:</strong> @Model.DateOfBirth</p>
+                    @if (@Model.PhotoPath != null)
+                    {
+                        <div class="text-center">
+                            <img src="/images/@Model.PhotoPath" class="profile-image" />
+                        </div>
+                    }
+                    <div class="profile-details">
+                        <p class="card-text"><strong>Kullanıcı Adı:</strong> @Model.UserName</p>
+                        <p class="card-text"><strong>Email:</strong> @Model.Email</p>
+                        @if (Model.DateOfBirth != null)
+                        {
+                            <p class="card-text"><strong>Doğum Tarihi:</strong> @Model.DateOfBirth?.ToString("dd.MM.yyyy")</p>
+                        }
+                    </div>
                 </div>
                 <!-- Profili düzenleme butonu -->
-                <div class="card-footer d-flex">
+                <div class="card-footer profile-buttons">
                     <form method="post" action="/ForEditProfile/Index">
-                        <button type="submit" class="btn btn-primary mr-md-4">
+                        <button type="submit" class="btn btn-primary">
                             <i class="fas fa-edit"></i> Profili Düzenle
                         </button>
                     </form>
 
                     <form asp-controller="BusinessPage" asp-action="Index" method="post">
-                        <button type="submit" class="btn btn-primary mr-md-4">İş Modeline Git</button>
+                        <button type="submit" class="btn btn-primary">İş Modeline Git</button>
                     </form>
 
                     <form asp-controller="Home" asp-action="TaskList" method="post">
@@ -54,6 +60,7 @@
             </div>
         }
     </div>
+
     @{
         if (TempData["Error"] != null)
         {
@@ -62,7 +69,6 @@
             </div>
         }
     }
-
 
     <!-- Bootstrap and JavaScript Dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

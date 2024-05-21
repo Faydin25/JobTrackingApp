@@ -1,6 +1,8 @@
 ﻿@model MyApplication.Web.Models.BusinessPageViewModel
 @using TaskStatus = MyApplication.Web.Models.TaskStatus;
 
+<div class="list-container">
+
 <table class="table">
     <thead>
         <tr>
@@ -24,6 +26,8 @@
         }
     </tbody>
 </table>
+
+</div>
 
 @functions {
     string GetStatusClass(TaskStatus status)
