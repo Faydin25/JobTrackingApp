@@ -13,5 +13,6 @@ namespace MyApplication.Web.Models
         public DateTime? DateOfBirth { get; set; }
 
         public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
+        public string LogTimesJson { get; set; } = "[]";
     }
 }

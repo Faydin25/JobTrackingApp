@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyApplication.Web.Data;
 using MyApplication.Web.Models;
+using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Security.Claims;
 
@@ -79,6 +80,28 @@ namespace MyApplication.Web.Controllers
             return View(model);
         }
 
+        public IActionResult UserLogs()
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var user = _context.Users.SingleOrDefault(u => u.Id == userId);
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            // JSON'dan log kayıtlarını deserialize edin
+            var logs = JsonConvert.DeserializeObject<List<DateTime>>(user.LogTimesJson) ?? new List<DateTime>();
+            logs = logs.OrderByDescending(log => log).ToList();
+
+            return View(logs);
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model)
         {
@@ -87,7 +110,23 @@ namespace MyApplication.Web.Controllers
             if (user != null)
             {
                 HttpContext.Session.SetString("UserName", user.UserName);
-                
+                HttpContext.Session.SetInt32("UserId", user.Id);
+
+                // JSON'dan log kayıtlarını deserialize edin
+                var logTimes = JsonConvert.DeserializeObject<List<DateTime>>(user.LogTimesJson) ?? new List<DateTime>();
+
+                // Yeni log kaydını ekleyin
+                logTimes.Add(DateTime.Now);
+
+                // Sadece son 10 log kaydını tutun
+                if (logTimes.Count > 10)
+                {
+                    logTimes = logTimes.OrderByDescending(l => l).Take(10).ToList();
+                }
+
+                // Log kayıtlarını JSON olarak serialize edin ve kaydedin
+                user.LogTimesJson = JsonConvert.SerializeObject(logTimes);
+                _context.SaveChanges();
 
                 return RedirectToAction("Profile");
             }

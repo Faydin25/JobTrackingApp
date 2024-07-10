@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyApplication.Web.Data;
 using MyApplication.Web.Models;
 using System;
@@ -9,7 +10,6 @@ namespace MyApplication.Web.Controllers
     public class MainPageController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly List<User> users;
 
         public MainPageController(ApplicationDbContext context)
         {
@@ -17,11 +17,19 @@ namespace MyApplication.Web.Controllers
         }
         public IActionResult Index()
         {
-            var _AgeGroups = GroupsAge(users);
-            var _UserCount = _context.Users.Count();
-            var _TasksAndCount = GetCountTasks(users);
+            string? _UserName = HttpContext.Session.GetString("UserName");
+            var _TUser = _context.Users.FirstOrDefault(u => u.UserName == _UserName);
+            var _UserLogs = _TUser.LogTimesJson;
 
-            //var _UserData = _context.Users.ToList();
+            var users = _context.Users.Include(u => u.Tasks).ToList();
+
+            var _AgeGroups = GroupsAge(users);
+
+            var _UserCount = _context.Users.Count();
+
+            var _TasksAndCount = GetCountTasks(users);
+            
+
             //var _TaskData = _context.Tasks.ToList();
 
             //ViewData["UserData"] = _UserData;
@@ -30,6 +38,7 @@ namespace MyApplication.Web.Controllers
             ViewData["AgeGroups"] = _AgeGroups;
             ViewData["UserCount"] = _UserCount;
             ViewData["TasksAndCount"] = _TasksAndCount;
+            ViewData["UserLogs"] = _UserLogs;
             return View();
         }
 
@@ -62,11 +71,11 @@ namespace MyApplication.Web.Controllers
         private Dictionary<string, int> GetCountTasks(List<User> users)
         {
             var countTasks = new Dictionary<string, int>
-            {
-                { "ToDo", 0 },
-                { "InProgress", 0 },
-                { "Done", 0 }
-            };
+    {
+        { "ToDo", 0 },
+        { "InProgress", 0 },
+        { "Done", 0 }
+    };
 
             foreach (var user in users)
             {

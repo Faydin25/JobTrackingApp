@@ -18,13 +18,13 @@ namespace MyApplication.Web.Controllers
         public IActionResult Index(int? userId)
         {
             var users = _context.Users.ToList();
-            IEnumerable<MyApplication.Web.Models.Task> tasks = Enumerable.Empty<MyApplication.Web.Models.Task>(); // Açıkça belirt
+            IEnumerable<MyApplication.Web.Models.Task> tasks = Enumerable.Empty<MyApplication.Web.Models.Task>();
             if (userId.HasValue)
             {
                 tasks = _context.Tasks
                                 .Include(t => t.User)
                                 .Where(t => t.UserId == userId.Value)
-                                .ToList(); // List<MyApplication.Web.Models.Task>
+                                .ToList();
             }
 
             var viewModel = new BusinessPageViewModel
