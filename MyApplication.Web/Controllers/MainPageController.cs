@@ -28,12 +28,18 @@ namespace MyApplication.Web.Controllers
             var _UserCount = _context.Users.Count();
 
             var _TasksAndCount = GetCountTasks(users);
-            
+
 
             //var _TaskData = _context.Tasks.ToList();
 
             //ViewData["UserData"] = _UserData;
             //ViewData["TaskData"] = _TaskData;
+
+            var _usersWithPhoto = users.Count(u => !string.IsNullOrEmpty(u.PhotoPath));
+            var _usersWithoutPhoto = users.Count(u => string.IsNullOrEmpty(u.PhotoPath));
+
+            ViewData["UsersWithPhoto"] = _usersWithPhoto;
+            ViewData["UsersWithoutPhoto"] = _usersWithoutPhoto;
 
             ViewData["AgeGroups"] = _AgeGroups;
             ViewData["UserCount"] = _UserCount;
